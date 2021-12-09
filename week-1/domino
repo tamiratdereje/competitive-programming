@@ -1,0 +1,7 @@
+n, m= list(map(int, input().split()))
+
+
+def domino(num1, num2):
+    return num1*num2//2
+   
+print(domino(n,m))
