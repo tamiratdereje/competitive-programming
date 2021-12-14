@@ -1,0 +1,20 @@
+class Solution(object):
+    def sortSentence(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        sample = s.split(" ")
+        for i in range(len(sample)):
+            for j in range(len(sample) - 1 - i):
+                
+                if (sample[j])[-1] > (sample[j+1])[-1]:
+                    sample[j], sample[j+1] = sample[j+1], sample[j]
+                    
+                    
+        final = []
+        for words in sample:
+             final.append(words[:-1])
+                
+
+        return " ".join(final)
