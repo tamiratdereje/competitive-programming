@@ -1,0 +1,14 @@
+class Solution(object):
+    def kClosest(self, points, k):
+        """
+        :type points: List[List[int]]
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        
+        def myfun(e):    
+            return ((e[0])**2 + (e[1])**2)
+              
+        points.sort(key = myfun)
+        
+        return points[:k]
