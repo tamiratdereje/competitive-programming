@@ -1,0 +1,21 @@
+class Solution(object):
+    def largestNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: str
+        """
+       
+        for i in range(len(nums)):
+            for j in range(len(nums)-1-i):
+                if (str(nums[j]) + str(nums[j+1])) < (str(nums[j+1]) + str(nums[j])):
+                    nums[j],nums[j+1] = nums[j+1],nums[j]
+                
+                    
+        output=[]  
+        sum = 0
+        for i in range(len(nums)):
+            sum+=nums[i]
+            output.append(str(nums[i]))
+        if sum == 0:
+            return "0"
+        return "".join(output)
