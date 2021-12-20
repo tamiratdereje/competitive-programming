@@ -1,0 +1,29 @@
+class Solution(object):
+    def checkArithmeticSubarrays(self, nums, l, r):
+        """
+        :type nums: List[int]
+        :type l: List[int]
+        :type r: List[int]
+        :rtype: List[bool]
+        """
+        j = 0
+        output=[]
+        count = 0
+        while j < len(r):
+            perviousCount = count
+            new = nums[l[j] : r[j] + 1]
+            new.sort()
+            d = new[1]-new[0]
+            for i in range(len(new)-1):
+                if new[i+1] - new[i] != d:
+                    output.append(False)
+                    count+=1
+                    break
+                    
+            if count != perviousCount + 1:     
+                output.append(True)
+                count+=1      
+            j+=1
+            
+        
+        return output
