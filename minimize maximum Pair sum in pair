@@ -1,0 +1,22 @@
+class Solution(object):
+    def minPairSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        nums.sort()
+        i = 0
+        j = len(nums) - 1
+        listOfNum = []
+        while i < j:
+            listOfNum.append(nums[i] + nums[j])
+            j-=1
+            i+=1
+        
+        listOfNum.sort()
+        output = listOfNum[len(listOfNum) - 1]
+        return output
+            
+        
+            
+        
