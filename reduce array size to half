@@ -1,0 +1,26 @@
+class Solution(object):
+    def minSetSize(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        dict ={}
+        for i in arr:
+            dict[i] = dict.get(i, 0) + 1
+            
+        value_list = list(dict.values())
+        value_list.sort()
+        finallist = 0
+        half = len(arr)//2
+        count = 0
+        
+        if len(value_list)==1:
+            return 1
+            
+        for i in range(len(value_list)-1,0, -1):
+            finallist += value_list[i]
+            count+=1
+            if finallist>=half:
+                return count
+        
+           
