@@ -1,0 +1,22 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        nums.sort()
+        dict ={}
+        for i in nums:
+            dict[i] = dict.get(i, 0) + 1
+             
+        sorted_dictionary = sorted(dict.items(), key=lambda x: x[1], reverse=True)
+        
+        output = []
+        for i in range(k):
+            output.append(sorted_dictionary[i][0])
+        
+        return output
+            
+        
+      
