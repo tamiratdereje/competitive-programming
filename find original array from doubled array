@@ -1,0 +1,40 @@
+class Solution(object):
+    def findOriginalArray(self, changed):
+        changed.sort()
+        """
+        :type changed: List[int]
+        :rtype: List[int]
+        """
+        from collections import Counter
+        dict = Counter(changed)
+     
+        if 0 in dict:
+            num = dict[0]
+            if num%2 != 0:
+                return [] 
+            dict[0] //= 2
+        
+        c = sorted(dict.keys())
+    
+        for i in c:
+            j = i*2
+            if i==0:
+                continue
+            
+            if dict[i]==0:
+                continue
+            
+            if dict[j] < dict[i]:
+                return []
+            
+
+            dict[j] -= dict[i]
+          
+        output=[]
+        
+        for i in c:
+            while(dict[i]!=0):
+                output.append(i)
+                dict[i] -= 1
+
+        return output
