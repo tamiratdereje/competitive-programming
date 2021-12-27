@@ -1,0 +1,25 @@
+class RecentCounter(object):
+
+    def __init__(self):
+        self.recent = []
+        self.rangeCheck = []
+        
+
+    def ping(self, t):
+        """
+        :type t: int
+        :rtype: int
+        """
+        self.recent.append(t)
+        self.rangeCheck = [t - 3000, t]
+        
+        while self.recent[0] < self.rangeCheck[0]:
+            self.recent = self.recent[1:]
+        
+        return len(self.recent)
+        
+
+
+# Your RecentCounter object will be instantiated and called as such:
+# obj = RecentCounter()
+# param_1 = obj.ping(t)
