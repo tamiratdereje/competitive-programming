@@ -1,0 +1,25 @@
+class Solution(object):
+    def reverseParentheses(self,s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        openTracker = []
+        stack = []
+        count=0
+        for i in range(len(s)):
+            stack.append(s[i])
+
+            if s[i] == "(":
+                openTracker.append(i)
+            if s[i] == ")":
+                stack[openTracker[-1]:]=reversed(stack[openTracker[-1]:])
+                openTracker.pop()
+
+        output = ""
+        output = output.join(stack)
+
+        for i in output:
+            if i == "(" or i == ")":
+                output = output.replace(i,"")
+        return output
