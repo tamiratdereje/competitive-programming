@@ -1,0 +1,24 @@
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        dict = {}
+        stack = []
+        output = []
+        
+        for i in range(len(nums2)):
+            
+            while len(stack)!=0 and nums2[i] > stack[-1]:
+                dict[stack.pop()] = nums2[i]
+            
+            stack.append(nums2[i])
+            dict[stack[-1]]=-1
+            
+        for j in range(len(nums1)):
+            output.append(dict[nums1[j]])
+            
+        return output
