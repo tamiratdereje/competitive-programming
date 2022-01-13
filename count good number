@@ -1,0 +1,15 @@
+class Solution:
+    def myPow(self, x, n: int):
+        if n == 1:
+            return x
+        else: 
+            if n % 2 == 1: 
+                cur = (x * x)  % 1000000007
+                return  self.myPow(cur, n//2) * self.myPow(x , 1)
+            curr = (x * x)  % 1000000007
+            return self.myPow(curr , n/2)
+        
+    def countGoodNumbers(self, n: int) -> int:
+        if n == 1:
+            return 5
+        return self.myPow(5, n-(n//2)) % 1000000007 * self.myPow(4,(n//2)) % 1000000007
