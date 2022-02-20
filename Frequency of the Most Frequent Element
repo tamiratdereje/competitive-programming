@@ -1,0 +1,32 @@
+class Solution(object):
+    def maxFrequency(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        nums.sort(reverse=True)
+        li = []
+        count = 0
+        i = 0
+        j = 0
+        while j < len(nums):
+            diff = nums[i] - nums[j]
+            if diff <= k:
+                k-=diff
+                j+=1
+            elif diff > k:
+                count = j-i
+                i+=1
+                k += ((j-i)*(nums[i-1] - nums[i]))
+                if len(li)==0:
+                    li.append(count)
+                else:
+                    if count>li[-1]:
+                        li.append(count) 
+         
+        if li==[]:
+            li.append(j-i)
+        if (j-i)>li[-1]:
+            li.append(j-i)
+        return li[-1]
