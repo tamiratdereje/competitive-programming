@@ -1,0 +1,20 @@
+class Solution(object):
+    def pancakeSort(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: List[int]
+        """ 
+        ans = []
+        for k in range(len(arr)):     
+            maxi = arr[0]
+            for i in range(len(arr)-k):
+                if arr[i] >= maxi:
+                    maxi = arr[i]
+            point = arr.index(maxi)
+            arr = arr[point::-1] + arr[point+1:]
+            ans.append(point+1)
+            n = len(arr)
+            arr = arr[(n-1-k)::-1] + arr[(n-k):]
+            ans.append(n-k)
+        return ans
+       
