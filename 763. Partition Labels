@@ -1,0 +1,28 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        dict = {}
+        for i in range(len(s)):
+            if s[i] not in dict:
+                dict[s[i]] = [i]
+            else:
+                dict[s[i]].append(i)
+        ans = []
+        current = dict[s[0]][-1] 
+        yaz = 0
+        for num in s:
+            if current == len(s)-1:
+                ans.append(len(s)- yaz)
+                break
+                
+            if dict[num][0] > current:
+                ans.append(current + 1 - yaz)
+                yaz = current+1
+                current = dict[num][-1]
+                if current == len(s)-1:
+                    ans.append(len(s)- yaz)
+                    break
+
+            if dict[num][-1] > current:
+                current = dict[num][-1]
+        return ans
+            
